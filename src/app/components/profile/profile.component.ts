@@ -37,7 +37,7 @@ export class ProfileComponent implements OnInit {
       this.form.reset();
       this.router.navigate(['/home']);
       sessionStorage.setItem('currentUser', JSON.stringify(body));
-      const newUserlist = this.api.userList.filter(
+      const newUserlist = this.api?.userList?.filter(
         (user: any) => user.email === body.email
       );
       newUserlist.push(body);

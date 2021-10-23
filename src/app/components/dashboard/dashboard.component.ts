@@ -14,7 +14,10 @@ export class DashboardComponent implements OnInit {
   constructor(private router: Router, public api: ApiService) {}
   @ViewChild('sidenav') sidenav!:MatSidenav;
   showFiller = false;
+  userName!:string;
   ngOnInit(): void {
+    const cuser=sessionStorage.getItem('currentUser');
+    this.userName=JSON.parse(<string>cuser).username;
     this.api.getSection().subscribe(
       (data: any) => {
         this.api.sections=data.results;
