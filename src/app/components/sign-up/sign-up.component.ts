@@ -48,11 +48,12 @@ export class SignUpComponent implements OnInit {
             localStorage.setItem('users', JSON.stringify(newuser));
             this.form.reset();
             this.router.navigate(['/login']);
-            // this.api.showSuccess('User registration successfull');
+            this.api.showSuccess('User registration successfull');
           }
         },
         (error: any) => {
-          // this.api.showError(error);
+          console.log(error);
+          this.api.showError(error);
         }
       );
     }

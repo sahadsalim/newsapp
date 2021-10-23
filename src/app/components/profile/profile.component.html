@@ -6,88 +6,45 @@
       <form [formGroup]="form">
         <div class="inputs">
           <label>Email</label>
-          <input
-            type="email"
-            formControlName="email"
-            matInput
-            placeholder="Email"
-
-          />
-          <!-- <span
-            class="Error"
-            *ngIf="
-              form.controls.email.touched &&
-              form.controls['email'].hasError('required')
-            "
-          >
-            email is Required
-          </span>
-          <span
-            class="Error"
-            *ngIf="
-              form.controls.email.touched && !form.controls.email.valid
-            "
-            >Not a valid email</span -->
-          <!-- > -->
+          <input type="email" formControlName="email" matInput placeholder="Email" />
         </div>
         <div class="inputs">
           <label>Password</label>
-          <input
-            type="password"
-            formControlName="password"
-            matInput
-            placeholder="Password"
-          />
-          <span
-            class="Error"
-            *ngIf="
+          <input type="password" formControlName="password" matInput placeholder="Password" />
+          <span class="Error" *ngIf="
               form.controls.password.dirty &&
               form.controls['password'].hasError('required')
-            "
-          >
+            ">
             Password is Required
           </span>
-          <span
-            class="Error"
-            *ngIf="
+          <span class="Error" *ngIf="
               form.controls.password.touched && !form.controls.password.valid
-            "
-          >
+            ">
             Maximum 20 charcter allowed and No special characters.
           </span>
         </div>
         <div class="inputs">
           <label>Username</label>
-          <input
-            type="text"
-            formControlName="username"
-            matInput
-            placeholder="username"
-          />
-          <span
-          class="Error"
-          *ngIf="
-            form.controls.username.dirty &&
-            form.controls['username'].hasError('required')
-          "
-        >
-        username is Required
-        </span>
-        <span
-        class="Error"
-        *ngIf="
-          form.controls.username.touched && !form.controls.username.valid
-        "
-      >
-      No special characters allowed.
-      </span>
+          <input type="text" formControlName="username" matInput placeholder="username" />
+          <span class="Error" *ngIf="
+              form.controls.username.dirty &&
+              form.controls['username'].hasError('required')
+            ">
+            username is Required
+          </span>
+          <span class="Error" *ngIf="
+              form.controls.username.touched && !form.controls.username.valid
+            ">
+            No special characters allowed.
+          </span>
         </div>
       </form>
       <div class="flex">
         <button mat-raised-button color="primary" (click)="save()">Save</button>
-        <button mat-raised-button color="warm" (click)="Delete()">Delete Account</button>
+        <button mat-raised-button color="warm" (click)="Delete()">
+          Delete Account
+        </button>
       </div>
-
     </div>
   </div>
 </div>

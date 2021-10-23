@@ -1,7 +1,8 @@
 
 <div class="selected-section" *ngIf="sectionSelected"><span>{{sectionSelected}}</span> <mat-icon (click)="clearSelectedSection()" class="close">close</mat-icon></div>
-<div class="flex wrap">
-  <div class="news-card" *ngFor="let item of articles">
+
+<div class="flex wrap" *ngIf="!api.loader">
+  <div class="news-card" *ngFor="let item of articles;">
     <mat-icon class="readicon" (click)="addToReadLater(item)" title="click to add into save for later" color="warm">article</mat-icon>
     <a [href]="item.url" class="news-card__card-link"></a>
     <img [src]="item.thumbnail_standard" [alt]="item.thumbnail_standard" class="news-card__image">
@@ -18,6 +19,8 @@
     <h3>No news available under the  section {{sectionSelected}}</h3>
   </div>
 </div>
-<mat-paginator [length]="num_article" (page)="handlePageEvent($event)" [pageIndex]="pageIndex" [pageSize]="pageSize" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons>
+<mat-paginator *ngIf="!api.loader" [length]="num_article" (page)="handlePageEvent($event)" [pageIndex]="pageIndex" [pageSize]="pageSize" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons>
 </mat-paginator>
-
+<div class="view loader" *ngIf="api.loader">
+  <mat-icon>refresh</mat-icon>
+</div>

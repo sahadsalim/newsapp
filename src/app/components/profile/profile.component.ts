@@ -38,21 +38,20 @@ export class ProfileComponent implements OnInit {
       this.router.navigate(['/home']);
       sessionStorage.setItem('currentUser', JSON.stringify(body));
       const newUserlist = this.api?.userList?.filter(
-        (user: any) => user.email === body.email
+        (user: any) => user.email !== body.email
       );
       newUserlist.push(body);
       localStorage.setItem('users', JSON.stringify(newUserlist));
-    }
-  }
+      this.api.showSuccess('User data updated succesfully');
 
-  onValueChange(file: any) {
-    console.log('File changed!');
+    }else{
+      this.api.showError('Form not valid');
+
+    }
   }
   ngOnInit(): void {
     this.userData = sessionStorage.getItem('currentUser');
     let val = JSON.parse(<string>this.userData);
-    console.log(val);
-
     this.form.patchValue({
       username: val.username,
       password: val.password,
@@ -60,9 +59,9 @@ export class ProfileComponent implements OnInit {
     });
   }
   Delete() {
-    const newUserlist = this.api.userList.filter(
-      (user: any) => user.email === this.userData.email
-    );
+    this.api.getUserList({});
+    const newUserlist = this.api.userList.filter((user: any) => user.email !== this.userData.email);
+    this.api.showSuccess('User deleted succesfully');
     localStorage.setItem('users', JSON.stringify(newUserlist));
     sessionStorage.setItem('currentUser', '');
     sessionStorage.setItem('isAuthenticated', 'false');

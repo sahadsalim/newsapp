@@ -1,2 +1,7 @@
-<router-outlet></router-outlet>
+<div class="main">
+  <router-outlet></router-outlet>
+  <div class="notification" *ngIf="api.isToast.active" [ngClass]="{'error': api.isToast.isError,'sucess': !api.isToast.isError}">
+    Sucessfully completed
+  </div>
+</div>
 <footer>© 2021 Inapp, Inc. All rights reserved.</footer>

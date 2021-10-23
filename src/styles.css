@@ -267,3 +267,8 @@ mat-sidenav{
   height: 100vh;
   background-color: #ddd;
 }
+@media (max-width: 900px) {
+  mat-sidenav{
+    width: 310px;
+  }
+}

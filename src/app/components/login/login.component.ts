@@ -28,21 +28,22 @@ export class LoginComponent implements OnInit {
         email: this.form.controls['email'].value,
         password: this.form.controls['password'].value,
       };
-      console.log(body);
       this.api.getUserList(body).subscribe(
         (data: any) => {
           const user=data.find((user:any)=> user.email===body.email&& user.password===body.password);
           if (user) {
+            this.api.showSuccess('Login successfull');
             sessionStorage.setItem('isAuthenticated',"true");
             sessionStorage.setItem("currentUser",JSON.stringify(user));
             this.form.reset();
-
             this.router.navigate(['/home']);
-            // this.api.showSuccess('Login successfull');
+          }else{
+          this.api.showError('Please check the Credentials');
+
           }
         },
         (error: any) => {
-          // this.api.showError('Please check the Credentials');
+          this.api.showError(error);
         }
       );
     }

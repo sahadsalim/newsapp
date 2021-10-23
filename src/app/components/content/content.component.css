@@ -14,7 +14,17 @@ img {
   align-items: center;
   justify-content: center;
 }
-
+.loader{
+  background-color: lightgray;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+}
+.loader mat-icon{
+  margin: 0 auto;
+  margin-top: 40vh;
+  color: var(--primary);
+}
 .example-sidenav {
   padding: 20px;
 }

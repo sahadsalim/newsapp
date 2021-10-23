@@ -11,7 +11,9 @@ export class ApiService {
   userList:any;
   sections:any;
   sectionSelected!:BehaviorSubject<string>;
-  readMeLater:any=[]
+  loader:boolean=false;
+  readMeLater:any=[];
+  isToast={active:false,isError:false,message:""};
   constructor(private http: HttpClient) {
     this.sectionSelected=new BehaviorSubject("");
   }
@@ -26,11 +28,25 @@ export class ApiService {
   getSection(){
     return this.http.get(this.sectionApi);
   }
-  // showSuccess(msg:string) {
+  showSuccess(msg:string) {
+    setTimeout(() => {
+      this.isToast.active=false;
+      this.isToast.message="";
+    }, 2000);
+    this.isToast.active=true;
+    this.isToast.message=msg;
+    this.isToast.isError=false;
+  }
+  showError(msg:string) {
+    setTimeout(() => {
+      this.isToast.active=false;
+      this.isToast.message="";
+      this.isToast.isError=false;
+    }, 2000);
+    this.isToast.active=true;
+    this.isToast.message=msg;
+    this.isToast.isError=true;
 
-  // }
-  // showError(msg:string) {
-
-  // }
+  }
 
 }

@@ -23,7 +23,7 @@ export class DashboardComponent implements OnInit {
         this.api.sections=data.results;
       },
       (error: any) => {
-        console.log(error);
+        this.api.showError(error);
 
       }
     )

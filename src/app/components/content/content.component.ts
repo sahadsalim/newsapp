@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, Input, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject, Subscriber, Subscription } from 'rxjs';
 import { ApiService } from 'src/app/services/api.service';
@@ -17,27 +17,30 @@ export class ContentComponent implements OnInit {
   sectionSelected: string = '';
   pageIndex = 0;
   pageSize = 10;
-  constructor(private router: Router, private api: ApiService) {}
+  constructor(private router: Router, public api: ApiService) {}
 
-  ngOnInit(): void {}
-  getArticles() {
-    this.article_subscriber = this.api.getArticle(this.pageIndex).subscribe(
-      (data: any) => {
-        this.articles = this.sectionSelected
-          ? data.results.filter(
-              (dataval: any) => dataval.section === this.sectionSelected
-            )
-          : data.results;
-        this.num_article = data.num_results;
-      },
-      (error: any) => {}
-    );
-  }
-  ngAfterContentInit(): void {
+  ngOnInit(): void {
     this.section_subscriber = this.api.sectionSelected.subscribe(
       (section: string) => {
         this.sectionSelected = section;
         this.getArticles();
+
+      }
+    );
+  }
+  getArticles() {
+    this.api.loader=true;
+
+    this.article_subscriber = this.api.getArticle(this.pageIndex).subscribe(
+      (data: any) => {
+        this.articles = this.sectionSelected? data.results.filter((dataval: any) => dataval.section === this.sectionSelected): data.results;
+        this.num_article = data.num_results;
+        this.api.loader=false;
+      },
+      (error: any) => {
+        this.api.showError(error);
+        this.api.loader=false;
+
       }
     );
   }
@@ -56,8 +59,6 @@ export class ContentComponent implements OnInit {
     this.api.readMeLater = newReadLater;
   }
   handlePageEvent(event: PageEvent) {
-    console.log(event);
-
     this.num_article = event.length;
     this.pageSize = event.pageSize;
     this.pageIndex = event.pageIndex;

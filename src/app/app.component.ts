@@ -1,5 +1,7 @@
 import { Observable } from 'rxjs';
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Router } from '@angular/router';
+import { ApiService } from './services/api.service';
 
 @Component({
   selector: 'app-root',
@@ -7,7 +9,8 @@ import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  constructor() {}
+  constructor(private router: Router, public api: ApiService) {}
+
 
   ngOnInit() {}
 }
