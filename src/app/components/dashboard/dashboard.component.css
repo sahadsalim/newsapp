@@ -1,0 +1,55 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  background-color: white;
+}
+.logo {
+  font-size: 1.2rem;
+  font-weight: 500;
+  padding: 12px 24px;
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+.profile{
+  width: 200px;
+  font-weight: bold;
+  padding: 8px 12px;
+  line-height: 3;
+  text-align: center;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+a{
+  text-decoration: none;
+}
+.circle{
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-color: var(--primary);
+  margin-left: 10px;
+  border-radius: 50%;
+}
+mat-nav-list{
+  margin-bottom: 5vw;
+}
+.section-header{
+  margin-top: 15px;
+    border-bottom: 2px solid var(--primary);
+}
+.section-head{color: var(--primary);text-align: center;font-weight: bold;}
+.section-list{color: #000;}
+.section-list:hover{
+  color: var(--primary);
+}
+.close{
+  text-align: center;
+  color: var(--primary);cursor: pointer;
+}
+.readme{
+  margin-right: 15px;
+}

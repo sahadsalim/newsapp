@@ -1,0 +1,16 @@
+<div class="readme-box">
+  <div class="flex readme-card" *ngFor="let art of api.readMeLater;">
+    <h3 class="text">{{art.title}}</h3>
+
+  </div>
+  <div class="news-card read-card" *ngFor="let item of api.readMeLater">
+    <mat-icon class="remove" title="click to remove article" (click)="remove(item)">close</mat-icon>
+    <a [href]="item.url" class="news-card__card-link"></a>
+    <div class="news-card__text-wrapper">
+      <h2 class="news-card__title">{{item.title}}</h2>
+      <div class="news-card__post-date">{{item.updated_date}}</div>
+    </div>
+  </div>
+</div>
+
+<div class="no-news" *ngIf="api.readMeLater.length==0"><h3>"No article saved for read later"</h3></div>

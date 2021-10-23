@@ -1,0 +1,269 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  --primary:#7a1f99;
+  width: 100%;
+}
+
+
+body{
+  background-color: #ecedef;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+form .Error{
+  color: red;
+}
+button{
+  cursor: pointer;
+}
+.flex{
+  display: flex;
+  justify-content: space-evenly;
+}
+.wrap{
+  flex-wrap: wrap;
+}
+ .newCard{
+  margin: 10px;
+  width: 100%;
+  flex: 1;
+  max-width: 500px;
+}
+footer{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  text-align: center;
+  background-color: var(--primary);
+  padding: 8px;
+}
+
+mat-icon{
+  cursor: pointer;
+}
+
+.card{
+    background-color: #fff;
+    padding: 30px;
+    max-width: 375px;
+    width: 100%;
+    border-radius: 20px;
+    animation: big 0.5s linear;
+    margin: 0 auto;
+    margin-top: 10vh;
+}
+
+.card h2{
+    font-size: 27px;
+    margin-bottom: 40px;
+}
+
+.inputs{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+.inputs label{
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+.inputs input, .inputs select{
+    display: block;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 7px;
+    border: 1px solid #464277;
+    background-color: #f4f8fb;
+    outline: none;
+}
+
+.text-right{
+    font-size: 16px;
+    text-align: right;
+    display: block;
+    color: var(--primary);
+    margin-bottom: 20px;
+}
+
+.btn-login{
+    display: block;
+    width: 100%;
+    height: 40px;
+    background-color: var(--primary);
+    color: #fff;
+    text-decoration: none;
+    text-align: center;
+    line-height: 40px;
+    border-radius: 7px;
+    margin-bottom: 20px;
+    transition: 0.3s;
+}
+
+.btn-login:hover{
+    transform: translateY(-5px);
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.4);
+}
+
+.text{
+    display: block;
+    text-align: center;
+    color: #888;
+    margin-bottom: 20px;
+}
+
+.text-long{
+    color: var(--primary);
+    margin-bottom: 20px;
+}
+.no-news {
+  width: 100%;
+  margin:0 auto;
+  height: 100%;
+  text-align: center;
+  margin-top: 15vh;
+}
+
+.no-news h3 {
+  color: var(--primary);
+}
+.news-card {
+  border: 0px solid aqua;
+  margin: 0.5rem;
+  position: relative;
+  height: 12rem;
+  overflow: hidden;
+  border-radius: 0.5rem;
+  flex: 1;
+  min-width: 290px;
+  box-shadow: 0 0 1rem rgb(0 0 0 / 50%);
+}
+
+.news-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0) linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.7) 80%);
+  z-index: 0;
+}
+
+.news-card__card-link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.news-card__image {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  transition: transform 3s ease;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  position: relative;
+  z-index: -1;
+}
+
+.news-card__text-wrapper {
+  position: absolute;
+  bottom: 0rem;
+  padding: 1rem;
+  color: white;
+  transition: background-color 1.5s ease;
+}
+
+.news-card__title {
+  transition: color 1s ease;
+  margin-bottom: 0.5rem;
+}
+
+.news-card__post-date {
+  font-size: .7rem;
+  margin-bottom: 0.5rem;
+  color: #CCC;
+}
+
+.news-card__excerpt {
+  font-weight: 300;
+}
+
+.news-card__read-more {
+  background: black;
+  color: #bbb;
+  display: block;
+  padding: 0.4rem 0.6rem;
+  border-radius: 0.3rem;
+  margin-top: 1rem;
+  border: 1px solid #444;
+  font-size: 0.8rem;
+  backface-visibility: hidden;
+  text-decoration: none;
+  width: 7rem;
+  margin-left: auto;
+  position: relative;
+  z-index: 5;
+}
+
+.news-card__details-wrapper {
+  max-height: 0;
+  opacity: 0;
+  transition: max-height 1.5s ease, opacity 1s ease;
+}
+
+a:active,
+a:hover {
+  outline-width: 0;
+}
+@media (min-width: 900px) {
+  .news-card {
+    height: 20rem;
+  }
+}
+
+@media (min-width: 900px) {
+  .news-card:hover .news-card__image {
+    transform: scale(1.2);
+    z-index: -1;
+  }
+
+  .news-card:hover .news-card__text-wrapper {
+    background-color: rgba(0, 0, 0, 0.6);
+  }
+
+  .news-card:hover .news-card__details-wrapper {
+    max-height: 20rem;
+    opacity: 1;
+  }
+}
+
+@keyframes big {
+    from {
+        transform: scale(0.7);
+      }
+
+      to {
+        transform: scale(1);
+      }
+}
+button:disabled{
+  cursor: not-allowed;
+}
+mat-sidenav{
+  width: 20vw;
+  height: 100vh;
+  background-color: #ddd;
+}

@@ -1,0 +1,20 @@
+.head {
+  text-align: center;
+}
+.readme-box{
+  width: 100%;
+  padding: 1rem;
+}
+.read-card{
+  max-height: 20vh !important;
+}
+.read-card .news-card__title,.news-card__excerpt{
+  color: var(--primary);
+}
+.read-card .remove{
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 10;
+  cursor: pointer;
+}

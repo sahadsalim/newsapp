@@ -1,0 +1,28 @@
+<div class="profileCard card">
+  <h2 >Welcome back</h2>
+  <form [formGroup]="form"  >
+  <div class="inputs">
+      <label>Email</label>
+      <input type="email" formControlName="email"  matInput placeholder="Email">
+      <span class="Error" *ngIf="form.controls.email.touched  && form.controls['email'].hasError('required')">
+        email  is Required
+     </span>
+     <span class="Error" *ngIf="form.controls.email.touched && !form.controls.email.valid">Not a valid email</span>
+
+    </div>
+  <div class="inputs">
+      <label>Password</label>
+      <input type="password" formControlName="password"  matInput placeholder="Password">
+      <span class="Error" *ngIf="form.controls.password.dirty && form.controls['password'].hasError('required')">
+        Password is Required
+     </span>
+     <span class="Error" *ngIf="form.controls.password.touched && !form.controls.password.valid">
+      Minimun 8 charcter Required
+   </span>
+    </div>
+  <a target="_blank" href="" class="text-right">Did you forget your password?</a>
+  <button (click)="login()" class="btn-login" type="submit">Log In</button>
+  <p class="text">OR</p>
+  <button   class="btn-login" type="button" (click)="switchView()">Register</button>
+</form>
+</div>

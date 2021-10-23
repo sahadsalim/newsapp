@@ -1,0 +1,21 @@
+
+<div class="selected-section" *ngIf="sectionSelected"><span>{{sectionSelected}}</span> <mat-icon (click)="clearSelectedSection()" class="close">close</mat-icon></div>
+<div class="flex wrap">
+  <div class="news-card" *ngFor="let item of articles">
+    <mat-icon class="readicon" (click)="addToReadLater(item)" title="click to add into save for later" color="warm">article</mat-icon>
+    <a [href]="item.url" class="news-card__card-link"></a>
+    <img [src]="item.thumbnail_standard" [alt]="item.thumbnail_standard" class="news-card__image">
+    <div class="news-card__text-wrapper">
+      <h2 class="news-card__title">{{item.title}}</h2>
+      <div class="news-card__post-date">{{item.updated_date}}</div>
+      <div class="news-card__details-wrapper">
+        <p class="news-card__excerpt">{{item.description}}</p>
+        <a [href]="item.url" class="news-card__read-more">Read more <i class="fas fa-long-arrow-alt-right"></i></a>
+      </div>
+    </div>
+  </div>
+  <div class="no-news" *ngIf="articles?.length==0">
+    <h3>No news available under the  section {{sectionSelected}}</h3>
+  </div>
+</div>
+

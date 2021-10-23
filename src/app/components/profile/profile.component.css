@@ -1,0 +1,18 @@
+.profile-view{
+  padding: 20px;
+}
+.flex{
+  justify-content: space-evenly;
+}
+.group{
+  max-width: 500px;
+  min-width: 400px;
+  flex: 1;
+  padding: 10px;
+}
+.dis{
+  background-color:grey;
+}
+button{
+  max-width: 200px;
+}
