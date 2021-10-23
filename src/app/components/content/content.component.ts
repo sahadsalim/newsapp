@@ -1,7 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { Subscriber, Subscription } from 'rxjs';
+import { BehaviorSubject, Subscriber, Subscription } from 'rxjs';
 import { ApiService } from 'src/app/services/api.service';
+import {PageEvent} from '@angular/material/paginator';
 @Component({
   selector: 'app-content',
   templateUrl: './content.component.html',
@@ -14,12 +15,13 @@ export class ContentComponent implements OnInit {
   article_subscriber!: Subscription;
   section_subscriber!: Subscription;
   sectionSelected: string = '';
+  pageIndex = 0;
+  pageSize = 10;
   constructor(private router: Router, private api: ApiService) {}
 
   ngOnInit(): void {}
-  goTo(url: string) {}
   getArticles() {
-    this.article_subscriber = this.api.getArticle().subscribe(
+    this.article_subscriber = this.api.getArticle(this.pageIndex).subscribe(
       (data: any) => {
         this.articles = this.sectionSelected
           ? data.results.filter(
@@ -52,5 +54,13 @@ export class ContentComponent implements OnInit {
     );
     newReadLater.push(article);
     this.api.readMeLater = newReadLater;
+  }
+  handlePageEvent(event: PageEvent) {
+    console.log(event);
+
+    this.num_article = event.length;
+    this.pageSize = event.pageSize;
+    this.pageIndex = event.pageIndex;
+    this.getArticles();
   }
 }

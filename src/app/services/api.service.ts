@@ -20,8 +20,8 @@ export class ApiService {
     this.userList=JSON.parse(users);
     return of(this.userList);
   }
-  getArticle(){
-    return this.http.get(this.articleApi);
+  getArticle(page:number=1){
+    return this.http.get(this.articleApi+"&page="+page);
   }
   getSection(){
     return this.http.get(this.sectionApi);
