@@ -21,7 +21,7 @@ export class ApiService {
     return of(this.userList);
   }
   getArticle(page:number=1){
-    return this.http.get(this.articleApi+"&page="+page);
+    return this.http.get(this.articleApi+"&page="+page+"&limit=10&offset=10");
   }
   getSection(){
     return this.http.get(this.sectionApi);
